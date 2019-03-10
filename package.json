@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "start:watch": "nodemon index.js"
+    "start:watch": "REDIS_PORT=32768 nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -19,7 +19,9 @@
   },
   "homepage": "https://github.com/Sahtair/twitter-pubsub#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "redis": "^2.8.0",
     "twitter": "^1.7.1"
   }
 }
