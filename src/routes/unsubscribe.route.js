@@ -1,5 +1,5 @@
 const app = require('../utils/express.helper');
-const { removeItem } = require('../utils/store.helper');
+const { removeItem } = require('../utils/mongo.helper');
 
 app.post('/unsubscribe', async (req, res) => {
     try {
@@ -7,12 +7,12 @@ app.post('/unsubscribe', async (req, res) => {
 
         console.log('URL to remove', url)
 
-        removeItem(url);
+        await removeItem(url);
 
         return res.send();
     } catch (err) {
         console.log(err);
 
-        return res.status(err.status || 500).send(err.message || `Error subscribing to channel.`);
+        return res.status(err.status || 500).send(err.message || `Error unsubscribing from channel.`);
     }
 });

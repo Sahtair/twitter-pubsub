@@ -1,15 +1,15 @@
 const app = require('../utils/express.helper');
-const { insertItem } = require('../utils/store.helper');
+const { insertItem } = require('../utils/mongo.helper');
 
 app.post('/subscribe', async (req, res) => {
     try {
         const { url } = req.body;
 
-        console.log('URL to insert', url)
-
-        insertItem(url);
-
-        return res.send();
+        await insertItem(url);
+        
+        return res.send({
+            message: 'success'
+        });
     } catch (err) {
         console.log(err);
 

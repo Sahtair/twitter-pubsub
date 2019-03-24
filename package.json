@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "start:watch": "REDIS_PORT=32768 nodemon index.js"
+    "start:watch": "REDIS_PORT=32768 MONGO_URL=mongodb://localhost:32769 nodemon index.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
     "express": "^4.16.4",
     "mongodb": "^3.1.13",
     "redis": "^2.8.0",
+    "request-promise-native": "^1.0.7",
     "twitter": "^1.7.1"
   }
 }

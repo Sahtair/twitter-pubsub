@@ -1,15 +1,26 @@
+const request = require('request-promise-native');
+
 const twitterStream = require('../utils/twitter.helper');
-const { getItems } = require('../utils/store.helper');
+const { listItems } = require('../utils/mongo.helper');
 
 twitterStream.on('data', async (event) => {
-    console.log(event);
+    const tweet = event.text;
+    console.log('tweet', tweet)
     try {
-        await Promise.all(getItems()
-            .map(item => {
-                return Promise.resolve()
-            }))
+        const items = await listItems();
+        console.log('items', items)
+        await Promise.all(items.map(({ url }) => {
+            return request({
+                url,
+                method: 'POST',
+                json: true,
+                body: {
+                    tweet
+                }
+            }).catch(err => (console.warn(err), Promise.resolve()))
+        }));
     } catch (err) {
-        console.error(err);
+        console.error('Error:', err);
     }
 });
 
