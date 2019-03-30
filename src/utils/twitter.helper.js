@@ -11,7 +11,7 @@ module.exports = function() {
             access_token_secret: 'z1qSgEHUnEyf8ACC8fwq1ZReTTfQCXU1jByoKisiTR6Ho'
         });
 
-        twitterStream = client.stream('statuses/filter', { track: 'javascript' });
+        twitterStream = client.stream('statuses/filter', { track: 'funny' });
     }
 
     return twitterStream;

@@ -18,6 +18,10 @@ const returnMongoConnection = () => new Promise((resolve, reject) => {
     });
 });
 
+const returnSubscriberCollection = async () => (
+    await returnMongoConnection()
+).db(DB_NAME).collection('subscribers');
+
 /**
   * @function listItems
   * @returns {Promise} Array of all items in db
@@ -26,11 +30,14 @@ const listItems = () => new Promise(async (resolve, reject) => {
     try {
         const client = await returnMongoConnection();
         const collection = client.db(DB_NAME).collection('subscribers');
+        console.time('start query')
         collection.find({}).toArray((err, res) => {
             client.close();
+            console.timeEnd('start query')
             if (err) {
                 return reject(err);
             }
+
             return resolve(res);
         });
     } catch (err) {
@@ -87,6 +94,7 @@ const removeItem = (url) => new Promise(async (resolve, reject) => {
 });
 
 module.exports = {
+    returnSubscriberCollection,
     listItems,
     insertItem,
     findItem,

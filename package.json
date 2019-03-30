@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
-    "start:watch": "REDIS_PORT=32768 MONGO_URL=mongodb://localhost:32769 nodemon index.js"
+    "start:watch": "REDIS_PORT=32770 MONGO_URL=mongodb://localhost:32769 nodemon --inspect index.js"
   },
   "repository": {
     "type": "git",
