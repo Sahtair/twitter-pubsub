@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js",
-    "start:watch": "REDIS_PORT=32770 MONGO_URL=mongodb://localhost:32769 nodemon --inspect index.js"
+    "test": "jest",
+    "start": "REDIS_PORT=32769 MONGO_URL=mongodb://localhost:32769 node index.js",
+    "start:watch": "REDIS_PORT=32769 MONGO_URL=mongodb://localhost:32769 nodemon --inspect index.js"
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,8 @@
     "redis": "^2.8.0",
     "request-promise-native": "^1.0.7",
     "twitter": "^1.7.1"
+  },
+  "devDependencies": {
+    "jest": "^24.7.1"
   }
 }

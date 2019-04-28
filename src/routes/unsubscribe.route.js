@@ -1,5 +1,5 @@
 const app = require('../utils/express.helper');
-const { removeItem } = require('../utils/mongo.helper');
+const { removeItem } = require('../database/subscribers.controller');
 
 app.post('/unsubscribe', async (req, res) => {
     try {

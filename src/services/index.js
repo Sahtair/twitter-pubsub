@@ -1,1 +1,1 @@
-require('./twitter-stream.service');
+require('./twitterStream.service');

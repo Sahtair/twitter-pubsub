@@ -1,5 +1,5 @@
 const app = require('../utils/express.helper');
-const { insertItem } = require('../utils/mongo.helper');
+const { insertItem } = require('../database/subscribers.controller');
 
 app.post('/subscribe', async (req, res) => {
     try {
