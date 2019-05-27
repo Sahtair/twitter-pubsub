@@ -1,0 +1,35 @@
+{
+  "name": "twitter-pubsub",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "start": "MONITORING=false REDIS_PORT=32768 INVALIDATE_CACHE=true MONGO_URL=mongodb://localhost:32769 node index.js",
+    "start:watch": "REDIS_PORT=32770 MONGO_URL=mongodb://localhost:32768 nodemon --inspect index.js",
+    "clinic": "REDIS_PORT=32770 INVALIDATE_CACHE=true MONGO_URL=mongodb://localhost:32768 clinic doctor -- node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sahtair/twitter-pubsub.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sahtair/twitter-pubsub/issues"
+  },
+  "homepage": "https://github.com/Sahtair/twitter-pubsub#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongodb": "^3.1.13",
+    "redis": "^2.8.0",
+    "request-promise-native": "^1.0.7",
+    "twitter": "^1.7.1"
+  },
+  "devDependencies": {
+    "appmetrics-dash": "^4.1.0",
+    "jest": "^24.7.1"
+  }
+}
