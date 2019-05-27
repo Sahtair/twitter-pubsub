@@ -5,15 +5,10 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-<<<<<<< HEAD
     "test:watch": "jest --watch",
     "start": "MONITORING=false REDIS_PORT=32768 INVALIDATE_CACHE=true MONGO_URL=mongodb://localhost:32769 node index.js",
     "start:watch": "REDIS_PORT=32770 MONGO_URL=mongodb://localhost:32768 nodemon --inspect index.js",
     "clinic": "REDIS_PORT=32770 INVALIDATE_CACHE=true MONGO_URL=mongodb://localhost:32768 clinic doctor -- node index.js"
-=======
-    "start": "REDIS_PORT=32769 MONGO_URL=mongodb://localhost:32769 node index.js",
-    "start:watch": "REDIS_PORT=32769 MONGO_URL=mongodb://localhost:32769 nodemon --inspect index.js"
->>>>>>> b13ad2330c1cd7e5bcfabccb59fb80d6f5843426
   },
   "repository": {
     "type": "git",
@@ -34,10 +29,7 @@
     "twitter": "^1.7.1"
   },
   "devDependencies": {
-<<<<<<< HEAD
     "appmetrics-dash": "^4.1.0",
-=======
->>>>>>> b13ad2330c1cd7e5bcfabccb59fb80d6f5843426
     "jest": "^24.7.1"
   }
 }
