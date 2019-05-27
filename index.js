@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 const {
     MONITORING
 } = process.env;
@@ -28,3 +29,12 @@ const init = async () => {
 };
 
 init();
+=======
+const app = require('./src/utils/express.helper');
+require('./src/routes');
+require('./src/services');
+
+app.listen(4040, () => {
+    console.log(`listening on port: 4040`);
+});
+>>>>>>> b13ad2330c1cd7e5bcfabccb59fb80d6f5843426
