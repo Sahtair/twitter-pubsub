@@ -1,14 +1,20 @@
 const Twitter = require('twitter');
+const {
+    CONSUMER_KEY,
+    CONSUMER_SECRET,
+    ACCESS_TOKEN_KEY,
+    ACCESS_TOKEN_SECRET
+} = require('../../config')
 
 let twitterStream = null
 
 module.exports = function() {
     if (!twitterStream) {
         const client = new Twitter({
-            consumer_key: 'gbveCqmu3utJ0ouDQczVAG1S8',
-            consumer_secret: 'KzcYNFrREq4cCbt2Eh9PJgVFFSLFKC0u4hK7oqUrjTZJCrzi8Z',
-            access_token_key: '1100849368289210368-HzdCTig2P3o3Qjl7VlIsrEEjce1Hnw',
-            access_token_secret: 'z1qSgEHUnEyf8ACC8fwq1ZReTTfQCXU1jByoKisiTR6Ho'
+            consumer_key: CONSUMER_KEY,
+            consumer_secret: CONSUMER_SECRET,
+            access_token_key: ACCESS_TOKEN_KEY,
+            access_token_secret: ACCESS_TOKEN_SECRET
         });
 
         twitterStream = client.stream('statuses/filter', { track: 'javascript' });
