@@ -142,4 +142,70 @@ describe('Unit tests - cache.helper', () => {
 
         });
     });
+
+    describe('test suit for getListLength function', () => {
+        let getListLength;
+        const key = 'someRedisKey';
+        const error = 'error';
+
+        const mockFn = (e = false) => {
+            redisClient.llen.mockImplementation((k, fn) => {
+                expect(k).toBe(key);
+                return fn(e);
+            })
+        };
+
+        beforeEach(() => {
+            ({ getListLength } = cache);
+        });
+
+        test('should call function and resolve function', () => {
+            mockFn();
+
+            expect(getListLength(key)).resolves;
+            expect(redisClient.llen).toHaveBeenCalled();
+
+        });
+
+        test('should call function and reject function', () => {
+            mockFn(error);
+
+            expect(getListLength(key)).rejects.toBe(error);
+            expect(redisClient.llen).toHaveBeenCalled();
+
+        });
+    });
+
+    describe('test suit for popElement function', () => {
+        let popElement;
+        const key = 'someRedisKey';
+        const error = 'error';
+
+        const mockFn = (e = false) => {
+            redisClient.lpop.mockImplementation((k, fn) => {
+                expect(k).toBe(key);
+                return fn(e);
+            })
+        };
+
+        beforeEach(() => {
+            ({ popElement } = cache);
+        });
+
+        test('should call function and resolve function', () => {
+            mockFn();
+
+            expect(popElement(key)).resolves;
+            expect(redisClient.lpop).toHaveBeenCalled();
+
+        });
+
+        test('should call function and reject function', () => {
+            mockFn(error);
+
+            expect(popElement(key)).rejects.toBe(error);
+            expect(redisClient.lpop).toHaveBeenCalled();
+
+        });
+    });
 });

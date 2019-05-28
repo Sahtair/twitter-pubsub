@@ -30,31 +30,26 @@ describe('Unit tests - mongo.helper', () => {
     });
 
     test('should resolve promise and return client', async () => {
-        expect.assertions(3);
+        expect.assertions(2);
 
         const returnClient = 'someClient';
         // mock connect funtion to call provided callback and check if the host
         // is correct
-        MongoClient.connect.mockImplementation((host, fn) => {
-            expect(host).toBe(process.env.MONGO_URL);
-            return fn(false, returnClient);
-        });
+        MongoClient.connect.mockResolvedValue(returnClient);
 
         const response = await returnMongoConnection();
         expect(response).toBe(returnClient);
-        expect(MongoClient.connect).toBeCalled();
+        expect(MongoClient.connect).toHaveBeenCalledWith(
+            process.env.MONGO_URL,
+            { useNewUrlParser: true }
+        );
     });
 
     test('should reject promise and return error', async () => {
-        expect.assertions(2);
-
         const error = 'err';
         // mock connect funtion to call provided callback and check if the host
         // is correct
-        MongoClient.connect.mockImplementation((host, fn) => {
-            expect(host).toBe(process.env.MONGO_URL);
-            return fn(error);
-        });
+        MongoClient.connect.mockRejectedValue(error)
 
         expect(returnMongoConnection()).rejects.toBe(error)
     });
