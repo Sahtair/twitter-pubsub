@@ -1,6 +1,7 @@
 const redis = require('redis')
 const {
-    REDIS_PORT
+    REDIS_PORT,
+    REDIS_HOST = 'localhost'
 } = process.env;
 
 let redisClient = null;
@@ -13,7 +14,7 @@ let redisClient = null;
  */
 module.exports = function () {
     if (!redisClient) {
-        redisClient = redis.createClient(REDIS_PORT)
+        redisClient = redis.createClient(REDIS_PORT, REDIS_HOST)
     }
     return redisClient;
 }()
